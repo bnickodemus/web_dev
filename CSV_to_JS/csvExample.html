@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<style>
+#textboxid
+{
+    height:250px;
+    width:250px;
+    font-size:14pt;
+}
+</style>
+
+<html>
+  <div>
+    <h1>This is an example of how to convert a CSV file into a JS object</h1>
+    <p style="margin-top:-1.5%;">* The converted js object will appear in the console</p>
+  </div>
+  <input type="file">
+  <button id="myBtn">Load Data</button>
+  <br>
+  <br>
+  <div id="file"></div>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+
+/*
+* csv text format example *
+heading1,heading2,heading3,heading4,heading5
+value1_1,value2_1,value3_1,value4_1,value5_1
+value1_2,value2_2,value3_2,value4_2,value5_2
+*/
+
+window.onload = function() {
+}
+
+function processData(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    var headers = allTextLines[0].split(',');
+    var lines = [];
+
+    for (var i=1; i<allTextLines.length; i++) {
+        var data = allTextLines[i].split(',');
+        if (data.length == headers.length) {
+
+            var tarr = [];
+            for (var j=0; j<headers.length; j++) {
+                tarr.push(headers[j]+":"+data[j]);
+            }
+            lines.push(tarr);
+        }
+    }
+    // alert(lines);
+    return lines;
+}
+
+var csvData = "";
+
+document.getElementById("myBtn").addEventListener("click", function() {
+  var reader = new FileReader();
+  reader.addEventListener('load', function() {
+    document.getElementById('file').innerText = this.result;
+    csvData = this.result;
+    console.log(processData(csvData));
+  });
+  reader.readAsText(document.querySelector('input').files[0]);
+});
+
+</script>
