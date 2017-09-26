@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style>
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+button.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2212";
+}
+</style>
+</head>
+<body>
+
+  <button onclick="toggleTitle(this)" class="accordion" id="btntitle">Title</button>
+  <div style="max-height:0; overflow:hidden;" id="title"><br>
+      <strong>subject: RE: RE: data</strong>
+      <textarea cols="10" rows="10" style="width:100%" id="editor"></textarea>
+      <button  class="btn" id="sndBtn">Send Reply</button><br><br>
+  </div>
+
+<script>
+// dropdown content
+function toggleTitle(obj) {
+  obj.className = "accordion active";
+  var str = "title";
+  var hiddenDiv = document.getElementById(str);
+  console.log(hiddenDiv);
+
+  if (hiddenDiv.style.maxHeight == "0px") {
+    hiddenDiv.style.maxHeight = "2000px";
+    obj.className = "accordion active";
+  }
+  else {
+    hiddenDiv.style.maxHeight = "0px";
+    obj.className = "accordion";
+  }
+}
+</script>
+
+</body>
+</html>

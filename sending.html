@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<a id="loading" style="display:none">sending ticket</a><br>
+<button onclick="go()">Go</button>
+<button onclick="stop()">Stop</button>
+
+<script>
+
+var start = false;
+var i = 0;
+var myVar = setInterval(function(){ myTimer() }, 500);
+
+function myTimer() {
+  if (start) {
+    document.getElementById( 'loading' ).style.display = '';
+    $("#loading").append(".");
+    i++;
+
+    if(i == 7)
+    {
+        $("#loading").html('sending ticket');
+        i = 0;
+    }
+  }
+}
+
+function go() {
+start = true;
+}
+
+function stop() {
+clearInterval(myVar);
+$("#loading").html('ticket was successfully sent');
+}
+
+</script>
+</body>
+</html>
