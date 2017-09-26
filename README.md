@@ -1,1 +1,1 @@
-CS290 projects using node.js and mongodb
+Projects using node.js, mongodb, HTML, CSS, JavaScript, JQuery, AngularJS, ect
