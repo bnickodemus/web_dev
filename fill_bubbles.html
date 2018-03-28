@@ -1,0 +1,84 @@
+<style>
+
+.rb-box {
+  max-width: 420px;
+  margin: 50px auto;
+  border-radius: .75em;
+}
+
+.rb-tab {
+  display: inline-block;
+  position: relative;
+  width: 20%;
+}
+
+.rb-txt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  color: black;
+}
+
+.rb-spot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: 1px solid rgba(0,0,0,.4);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: ease .5s;
+}
+
+.rb-tab-active .rb-spot {
+  background: rgba(0,0,0,.3);
+  border: 1px solid rgba(0,0,0,.6);
+}
+
+</style>
+
+<html>
+<div class="rb-box">
+
+  <p>1. On a scale of 1 to 5 how cubic are you?</p>
+  <div id="rb-1">
+    <div class="rb-tab rb-tab-active" data-value="1">
+      <div class="rb-spot">
+        <span class="rb-txt">1</span>
+      </div>
+    </div><div class="rb-tab" data-value="2">
+      <div class="rb-spot">
+        <span class="rb-txt">2</span>
+      </div>
+    </div><div class="rb-tab" data-value="3">
+      <div class="rb-spot">
+        <span class="rb-txt">3</span>
+      </div>
+    </div><div class="rb-tab" data-value="4">
+      <div class="rb-spot">
+        <span class="rb-txt">4</span>
+      </div>
+    </div><div class="rb-tab" data-value="5">
+      <div class="rb-spot">
+        <span class="rb-txt">5</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+$(".rb-tab").click(function(){
+  $(this).parent().find(".rb-tab").removeClass("rb-tab-active");
+  $(this).addClass("rb-tab-active");
+});
+
+</script>
